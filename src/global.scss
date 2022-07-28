@@ -1,0 +1,34 @@
+@import "variables";
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: $font-color;
+    background-color: $background-color;
+    font-family: $font-family;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation-name: color;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-timing-function: ease;
+}
+
+@keyframes color {
+    to {
+        color: rgba(0, 183, 255, 0.829)
+    }
+}
