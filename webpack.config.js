@@ -4,9 +4,9 @@ const path = require("path");
 const webpack = require("webpack");
 
 const isDevelopment = process.env.NODE_ENV !== "production";
-
+const mode = process.env.WEBPACK_SERVE ? 'development' : 'production';
 module.exports = {
-    mode: isDevelopment ? "development" : "production",
+    mode: mode,
     entry: "./src/index.tsx",
     devServer: {
         hot: true,
@@ -34,9 +34,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: require.resolve("babel-loader"),
                 options: {
-                    plugins: [
-                        isDevelopment && require.resolve("react-refresh/babel"),
-                    ].filter(Boolean),
+                    plugins: ['@babel/plugin-transform-runtime', mode!='production' && require.resolve('react-refresh/babel')].filter(Boolean),
                 },
             },
             {
